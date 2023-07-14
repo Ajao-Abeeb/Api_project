@@ -7,4 +7,4 @@ class TodoCompletedList(generics.ListAPIView):
     
     def get_queryset(self):
          user = self.request.user 
-         return Todo.objects.filter(user=user, datecompleted)
+         return Todo.objects.filter(user=user, datecompleted_isnull=False).order_by('-datecompleted')
